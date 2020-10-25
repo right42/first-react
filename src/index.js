@@ -4,12 +4,32 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const user = {
+  firstName : 'Harper',
+  lastName : 'Perzk'
+}
+
+const element = (
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
+)
+
+function formatName(user){
+  return user.firstName + ' ' + user.lastName;
+}
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    element,
+    document.querySelector('#root')
+)
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
