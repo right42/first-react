@@ -4,20 +4,40 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 
-function NumberList(props){
-  const numbers = props.numbers;
-  let numberItems = numbers.map((number) => 
-    <li key={number.toString()}>{number}</li>
-  );
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: '12345'};
 
-  return (
-    <ul>{numberItems}</ul>
-  )
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Essay:
+          <textarea value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
 }
 
-const numbers = [1, 2, 3, 4, 7];
+
 ReactDOM.render(
-  <NumberList numbers={numbers} />,
+  <NameForm/>,
   document.querySelector('#root')
 )
 
