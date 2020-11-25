@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: '12345'};
+    this.state = {value: 'coconut', initData : 'lime'};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,8 +26,13 @@ class NameForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Essay:
-          <textarea value={this.state.value} onChange={this.handleChange} />
+          Pick your favorite flavor:
+          <select value={this.state.initData} onChange={this.handleChange}>
+            <option value="grapefruit">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+          </select>
         </label>
         <input type="submit" value="Submit" />
       </form>
